@@ -4,7 +4,7 @@ const router = express.Router();
 
 const secured = require('../utils/secured');
 
-const usersController = requre('./usersController');
+const usersController = require('./usersController');
 
 router.post('/register', usersController.register);
 router.post('/login', usersController.login);
@@ -14,4 +14,4 @@ router.post('/:id', secured, usersController.getById);
 router.post('/update', secured, usersController.update);
 router.post('/delete', secured, usersController.delete);
 
-exports.router = router;
+module.exports = router;
