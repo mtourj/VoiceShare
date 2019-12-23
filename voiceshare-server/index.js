@@ -17,6 +17,9 @@ app.use(express.json());
 app.use(helmet());
 
 // Routes
+app.get('/', (req, res) => {
+  res.status(200).json({message: "She's alive"});
+})
 app.use('/users', usersRouter);
 
 // Connect to the database on MongoDB Atlas
