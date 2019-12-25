@@ -34,7 +34,11 @@ export const Auth0Provider = ({
 
       if (isAuthenticated) {
         const user = await auth0FromHook.getUser();
+        const token = await auth0FromHook.getTokenSilently();
+
         setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', token);
       }
 
       setLoading(false);

@@ -1,11 +1,29 @@
-import React from 'react';
+import React from "react";
 
-const Home = () => {
+import "./stylesheets/Home.scss";
+
+import { connect } from "react-redux";
+
+import SearchFilter from "./SearchFilter";
+
+import Post from "./Post";
+
+const Home = props => {
   return (
-    <div>
-      
+    <div className="home">
+      <div className="header">
+        <h1>Browse Artists</h1>
+        {props.isAuthenticated ? <div className="create">+ CREATE</div> : null}
+      </div>
+      <SearchFilter
+        renderClassName="posts"
+        array={props.posts}
+        Component={props => <Post {...props} />}
+      />
     </div>
   );
 };
 
-export default Home;
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps, null)(Home);

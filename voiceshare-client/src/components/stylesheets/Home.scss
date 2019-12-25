@@ -1,0 +1,44 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      padding: 8px 32px;
+      user-select: none;
+    }
+
+    .create {
+      margin: 8px 32px;
+      padding: 8px 16px;
+      font-weight: bolder;
+      border-radius: 6px;
+      color: white;
+      border: 1px solid rgb(145, 154, 163);
+      background-color: slategray;
+      user-select: none;
+      cursor: pointer;
+
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+        background-color: rgb(136, 149, 163);
+      }
+    }
+  }
+
+  .posts {
+    display: flex;
+    margin: 16px;
+  }
+}
