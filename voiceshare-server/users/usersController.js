@@ -1,10 +1,13 @@
-exports.register = (req, res) => {
-  // Register a user to the database
-  // Then login
-}
-
 exports.login = (req, res) => {
-  // Log user in
+  // Check token in headers against user in body
+  
+  // Check if user exists in database
+
+  // If not, create the user
+
+  // If they do, retrieve the user
+
+  // Return user object to client
 }
 
 exports.resume = (req, res) => {
