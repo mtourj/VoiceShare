@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 
 const Profile = props => {
   
+  console.log(props.isAuthenticated);
+
   return !props.isAuthenticated ? <Redirect history={props.history} to='/' /> : (
     <div className="profile">
       <div className="left-nav">

@@ -19,7 +19,7 @@ export const login = user => dispatch => {
   dispatch({ type: LOGIN_START });
   // Check database for this user
   return axiosWithAuth()
-    .get(process.env.DATABASE_URL)
+    .post(`${process.env.DATABASE_URL}/users/login`, user)
     .then(res => {
       console.log(res);
     })

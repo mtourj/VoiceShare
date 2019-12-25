@@ -14,7 +14,7 @@ import { useAuth0 } from "./react-auth0-spa";
 
 import { connect } from "react-redux";
 
-import { setToken, setUser } from "./actions";
+import { setToken, setUser, login } from "./actions";
 
 function App(props) {
   const { isAuthenticated, loading, user, token, logout } = useAuth0();
@@ -56,7 +56,7 @@ function App(props) {
     
   ]
 
-  const init = () => {
+  const start = () => {
     if (token && token !== props.token) {
       setToken(token);
     }
@@ -72,7 +72,14 @@ function App(props) {
     }
   };
 
-  useEffect(init, []);
+  useEffect(start, []);
+
+  useEffect(() => {
+    if(isAuthenticated && user) {
+      console.log(user);
+      login(user);
+    }
+  }, [isAuthenticated])
 
   if (loading) {
     return <div>Loading...</div>;
@@ -89,7 +96,7 @@ function App(props) {
         render={props => <OAuthRedirect {...props} />}
       />
       <Route exact path="/register" render={props => <Register {...props} />} />
-      <Route exact path="/profile" isAuthenticated={isAuthenticated} render={props => <Profile logout={logout} {...props} />} />
+      <Route exact path="/profile" render={props => <Profile isAuthenticated={isAuthenticated} logout={logout} {...props} />} />
     </div>
   );
 }
